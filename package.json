@@ -1,0 +1,21 @@
+{
+  "name": "simulator",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.4"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "autoprefixer": "^10.4.27",
+    "gsap": "^3.14.2",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
+  }
+}
