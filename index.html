@@ -17,118 +17,127 @@
     <canvas id="hero-canvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-30 pointer-events-none"></canvas>
 
     <!-- Navigation Overlay / Header -->
-    <nav class="fixed w-full top-0 z-50 glassmorphism shadow-lg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+    <nav class="fixed w-full top-0 z-50 glassmorphism shadow-lg h-16 sm:h-20 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div class="flex items-center justify-between h-full">
           <div class="flex-shrink-0">
-            <a href="#" class="font-bold font-[Outfit] text-2xl tracking-wider uppercase flex items-center gap-2">
+            <a href="#" class="font-bold font-[Outfit] text-xl sm:text-2xl tracking-wider uppercase flex items-center gap-2">
               <span class="text-brand-red text-glow-red">Laser</span>
               <span class="text-brand-blue text-glow-blue">Sim</span>
             </a>
           </div>
+          
           <!-- Desktop Nav -->
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-6">
-              <a href="#home" class="hover:text-brand-red smooth-transition font-medium">Home</a>
-              <a href="#simulator" class="hover:text-brand-red smooth-transition font-medium">Simulator</a>
-              <a href="#theory" class="hover:text-brand-blue smooth-transition font-medium">Theory</a>
-              <a href="#applications" class="hover:text-brand-blue smooth-transition font-medium">Applications</a>
-              <a href="#quiz" class="hover:text-brand-red smooth-transition font-medium">Quiz</a>
-              
-              <!-- Theme Toggle -->
-              <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 smooth-transition focus:outline-none" aria-label="Toggle Theme">
-                <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <!-- Default to moon icon initially, JS will overwrite based on state -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <!-- Mobile menu button -->
-          <div class="-mr-2 flex md:hidden items-center gap-4">
-             <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none">
-                <svg id="theme-icon-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                </svg>
-             </button>
-            <button id="mobile-menu-btn" class="p-2 rounded-md focus:outline-none">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path id="mobile-menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <div class="hidden md:flex items-center space-x-1 lg:space-x-4">
+            <a href="#home" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition font-medium text-sm lg:text-base">Home</a>
+            <a href="#simulator" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition font-medium text-sm lg:text-base">Simulator</a>
+            <a href="#theory" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition font-medium text-sm lg:text-base">Theory</a>
+            <a href="#applications" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition font-medium text-sm lg:text-base">Applications</a>
+            <a href="#quiz" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition font-medium text-sm lg:text-base">Quiz</a>
+            
+            <div class="w-px h-6 bg-gray-500/20 mx-2"></div>
+            
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2.5 rounded-xl hover:bg-white/10 smooth-transition focus:outline-none" aria-label="Toggle Theme">
+              <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
               </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Actions -->
+          <div class="flex md:hidden items-center gap-2">
+            <button id="theme-toggle-mobile" class="p-2.5 rounded-xl hover:bg-white/10 focus:outline-none">
+              <svg id="theme-icon-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+            <button id="mobile-menu-btn" class="p-2.5 rounded-xl hover:bg-white/10 focus:outline-none relative" aria-label="Menu">
+              <div id="hamburger-icon" class="w-6 h-5 flex flex-col justify-between transition-all duration-300">
+                <span class="w-full h-0.5 bg-current rounded-full transition-all"></span>
+                <span class="w-full h-0.5 bg-current rounded-full transition-all"></span>
+                <span class="w-full h-0.5 bg-current rounded-full transition-all"></span>
+              </div>
             </button>
           </div>
         </div>
       </div>
-      <!-- Mobile menu (hidden by default) -->
-      <div id="mobile-menu" class="hidden md:hidden glassmorphism border-t border-glass-border-light dark:border-glass-border-dark">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center flex flex-col">
-          <a href="#home" class="block px-3 py-2 rounded-md font-medium hover:bg-gray-200 dark:hover:bg-gray-800">Home</a>
-          <a href="#simulator" class="block px-3 py-2 rounded-md font-medium hover:bg-gray-200 dark:hover:bg-gray-800">Simulator</a>
-          <a href="#theory" class="block px-3 py-2 rounded-md font-medium hover:bg-gray-200 dark:hover:bg-gray-800">Theory</a>
-          <a href="#applications" class="block px-3 py-2 rounded-md font-medium hover:bg-gray-200 dark:hover:bg-gray-800">Applications</a>
-          <a href="#quiz" class="block px-3 py-2 rounded-md font-medium hover:bg-gray-200 dark:hover:bg-gray-800">Quiz</a>
+
+      <!-- Mobile menu Overlay -->
+      <div id="mobile-menu" class="fixed inset-0 top-16 sm:top-20 z-40 bg-white/90 dark:bg-black/90 backdrop-blur-xl md:hidden opacity-0 pointer-events-none transition-all duration-300 translate-y-4">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 p-6 text-center">
+          <a href="#home" class="text-3xl font-bold font-[Outfit] hover:text-brand-red">Home</a>
+          <a href="#simulator" class="text-3xl font-bold font-[Outfit] hover:text-brand-red">Simulator</a>
+          <a href="#theory" class="text-3xl font-bold font-[Outfit] hover:text-brand-blue">Theory</a>
+          <a href="#applications" class="text-3xl font-bold font-[Outfit] hover:text-brand-blue">Applications</a>
+          <a href="#quiz" class="text-3xl font-bold font-[Outfit] hover:text-brand-red">Quiz</a>
         </div>
       </div>
     </nav>
 
     <!-- ======== Hero Section ======== -->
-    <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-16 px-4 text-center">
-      <h1 class="gsap-hero-title font-bold font-[Outfit] text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tight">
-        Discover <span class="bg-gradient-to-r from-brand-red to-brand-blue bg-clip-text text-transparent drop-shadow-xl inline-block transition-transform hover:scale-105 duration-300">Laser Physics</span>
-      </h1>
-      <p class="gsap-hero-desc text-lg md:text-2xl max-w-2xl mb-10 opacity-90 mx-auto leading-relaxed">
-        An interactive journey through stimulated emission, optical cavities, and the future of photonics.
-      </p>
-      
-      <div class="gsap-hero-buttons flex flex-wrap gap-4 justify-center">
-        <a href="#simulator" class="px-8 py-4 rounded-full font-bold text-white bg-brand-red hover:bg-red-600 box-glow-red hover:scale-105 transition-transform">
-          Try Simulator
-        </a>
-        <a href="#theory" class="px-8 py-4 rounded-full font-bold border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white box-glow-blue hover:scale-105 transition-all">
-          Learn Theory
-        </a>
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 text-center">
+      <div class="max-w-5xl mx-auto space-y-6 sm:space-y-8">
+        <h1 class="gsap-hero-title font-bold font-[Outfit] text-[clamp(2.5rem,8vw,6rem)] leading-[1.1] tracking-tight">
+          Discover <span class="bg-gradient-to-r from-brand-red via-brand-purple to-brand-blue bg-clip-text text-transparent drop-shadow-sm inline-block transition-transform hover:scale-105 duration-500">Laser Physics</span>
+        </h1>
+        <p class="gsap-hero-desc text-lg sm:text-2xl max-w-2xl mx-auto opacity-80 leading-relaxed font-light">
+          An interactive laboratory exploration of stimulated emission, populations, and the cutting edge of optical science.
+        </p>
+        
+        <div class="gsap-hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <a href="#simulator" class="w-full sm:w-auto px-10 py-4 rounded-2xl font-bold text-white bg-brand-red hover:bg-red-600 box-glow-red hover:scale-105 transition-all text-lg shadow-xl">
+            Launch Simulator
+          </a>
+          <a href="#theory" class="w-full sm:w-auto px-10 py-4 rounded-2xl font-bold border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white box-glow-blue hover:scale-105 transition-all text-lg">
+            Explore Theory
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- ======== Simulator Section ======== -->
-    <section id="simulator" class="py-24 px-4 sm:px-8 relative">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-5xl font-bold font-[Outfit] mb-4">Real-Time <span class="text-brand-red text-glow-red">Simulator</span></h2>
-          <p class="text-xl max-w-3xl mx-auto">Adjust parameters to see how electrons and photons interact in the optical cavity.</p>
+    <section id="simulator" class="py-20 px-4 sm:px-6 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto space-y-8 sm:space-y-12">
+        <div class="text-center space-y-4">
+          <h2 class="text-3xl sm:text-5xl font-bold font-[Outfit]">Real-Time <span class="text-brand-red text-glow-red">Simulator</span></h2>
+          <p class="text-lg sm:text-xl max-w-2xl mx-auto text-muted">Experiment with quantum interactions and optical amplification in our virtual laboratory.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-8 items-start">
           
-          <!-- Controls Panel (Left) -->
-          <div class="lg:col-span-3 glassmorphism rounded-3xl p-6 flex flex-col gap-6">
-            <div>
-              <h3 class="text-xl font-bold mb-4 border-b border-gray-500 pb-2">⚙️ Controls</h3>
+          <!-- Controls Panel -->
+          <aside class="xl:col-span-4 modern-card space-y-6 sm:space-y-8">
+            <div class="space-y-6">
+              <div class="flex items-center gap-3 border-b border-gray-500/20 pb-4">
+                <span class="text-2xl">⚙️</span>
+                <h3 class="text-xl font-bold uppercase tracking-tight">Simulator Controls</h3>
+              </div>
               
               <!-- Wavelength -->
-              <div class="mb-5">
-                <label class="block text-sm font-medium mb-2 flex justify-between">
-                  <span>Wavelength:</span>
-                  <span id="wavelength-val" class="font-bold text-brand-red">632 nm</span>
-                </label>
+              <div class="space-y-4">
+                <div class="flex justify-between items-end">
+                  <label class="text-sm font-semibold uppercase tracking-wider opacity-70">Wavelength</label>
+                  <span id="wavelength-val" class="font-mono font-bold text-brand-red bg-brand-red/10 px-2 py-0.5 rounded text-lg">632 nm</span>
+                </div>
                 <input type="range" id="wavelength" min="400" max="700" value="632" class="w-full accent-brand-red h-2 rounded-lg cursor-pointer">
-                <div class="flex justify-between text-xs opacity-50 mt-1"><span>400 nm</span><span>700 nm</span></div>
+                <div class="flex justify-between text-[10px] uppercase font-bold opacity-40"><span>400nm</span><span>700nm</span></div>
               </div>
 
               <!-- Pump Power -->
-              <div class="mb-5">
-                <label class="block text-sm font-medium mb-2 flex justify-between">
-                  <span>Pump Power:</span>
-                  <span id="pump-val" class="font-bold text-brand-red">50%</span>
-                </label>
+              <div class="space-y-4">
+                <div class="flex justify-between items-end">
+                  <label class="text-sm font-semibold uppercase tracking-wider opacity-70">Pump Power</label>
+                  <span id="pump-val" class="font-mono font-bold text-brand-red bg-brand-red/10 px-2 py-0.5 rounded text-lg">50%</span>
+                </div>
                 <input type="range" id="pump-power" min="0" max="100" value="50" class="w-full accent-brand-red h-2 rounded-lg cursor-pointer">
-                <div class="flex justify-between text-xs opacity-50 mt-1"><span>0%</span><span>100%</span></div>
+                <div class="flex justify-between text-[10px] uppercase font-bold opacity-40"><span>0%</span><span>100%</span></div>
               </div>
 
               <!-- Medium -->
-              <div class="mb-5">
-                <label class="block text-sm font-medium mb-2">Active Medium:</label>
-                <select id="medium-select" class="w-full bg-transparent border-2 border-gray-400 rounded-lg p-2 focus:border-brand-blue focus:outline-none focus:ring-0">
+              <div class="space-y-3">
+                <label class="text-sm font-semibold uppercase tracking-wider opacity-70">Active Medium</label>
+                <select id="medium-select" class="w-full bg-white/5 dark:bg-black/20 border border-gray-500/30 rounded-xl p-3 focus:border-brand-blue outline-none transition-all appearance-none cursor-pointer">
                   <option value="gas" class="text-black">He-Ne (Gas)</option>
                   <option value="solid" class="text-black">Ruby (Solid)</option>
                   <option value="semi" class="text-black">Semiconductor</option>
@@ -136,72 +145,90 @@
               </div>
 
               <!-- Mirror Alignment -->
-              <div class="mb-4">
-                <label class="block text-sm font-medium mb-2 flex justify-between">
-                  <span>Mirror Alignment:</span>
-                  <span id="mirror-val" class="font-bold text-brand-blue">Perfect</span>
-                </label>
+              <div class="space-y-4">
+                <div class="flex justify-between items-end">
+                  <label class="text-sm font-semibold uppercase tracking-wider opacity-70">Mirror Alignment</label>
+                  <span id="mirror-val" class="font-mono font-bold text-brand-blue bg-brand-blue/10 px-2 py-0.5 rounded text-lg">Perfect</span>
+                </div>
                 <input type="range" id="mirror-align" min="0" max="100" value="100" class="w-full accent-brand-blue h-2 rounded-lg cursor-pointer">
-                <div class="flex justify-between text-xs opacity-50 mt-1"><span>Misaligned</span><span>Perfect</span></div>
+                <div class="flex justify-between text-[10px] uppercase font-bold opacity-40"><span>Unstable</span><span>Stable</span></div>
               </div>
             </div>
 
-            <button id="toggle-laser" class="w-full py-3 rounded-lg font-bold bg-brand-blue hover:bg-blue-600 text-white shadow-lg transition-transform hover:scale-105 active:scale-95 text-lg">
-              ⚡ POWER ON
-            </button>
+            <div class="pt-4 space-y-4">
+              <button id="toggle-laser" class="w-full py-4 rounded-xl font-black bg-brand-blue hover:bg-blue-600 text-white shadow-xl hover:shadow-brand-blue/20 transition-all hover:scale-[1.02] active:scale-95 text-lg uppercase tracking-widest">
+                ⚡ Power On
+              </button>
 
-            <!-- Add Reading Button -->
-            <button id="add-reading-btn" class="w-full py-2.5 rounded-lg font-bold border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition-colors">
-              📊 Add Reading to Graph
-            </button>
-            <button id="clear-readings-btn" class="w-full py-2 rounded-lg font-medium border border-gray-500 text-gray-400 hover:bg-gray-500 hover:text-white transition-colors text-sm">
-              🗑️ Clear All Readings
-            </button>
-          </div>
+              <div class="grid grid-cols-2 gap-3">
+                <button id="add-reading-btn" class="py-3 rounded-xl font-bold border-2 border-brand-purple/40 text-brand-purple hover:bg-brand-purple hover:text-white transition-all text-sm">
+                  📊 Log Data
+                </button>
+                <button id="clear-readings-btn" class="py-3 rounded-xl font-bold border border-gray-500/30 text-muted hover:bg-gray-500/10 transition-all text-sm">
+                  🗑️ Reset
+                </button>
+              </div>
+            </div>
+          </aside>
 
-          <!-- Right Panel: Simulation + Graph + Data -->
-          <div class="lg:col-span-9 flex flex-col gap-6">
+          <!-- Visualization Panel -->
+          <div class="xl:col-span-8 flex flex-col gap-6 lg:gap-8">
             
-            <!-- Simulation Canvas -->
-            <div class="glassmorphism rounded-3xl p-4 flex flex-col items-center relative overflow-hidden">
-              <div id="canvas-container" class="w-full relative flex flex-col items-center">
-                <canvas id="laser-canvas" class="bg-black/80 rounded-2xl w-full h-[280px] md:h-[350px] shadow-2xl border border-gray-700"></canvas>
+            <!-- Simulator Render -->
+            <div class="modern-card p-4 sm:p-6 flex flex-col items-center relative overflow-hidden min-h-[350px] sm:min-h-[450px]">
+              <div id="canvas-container" class="w-full h-full relative flex flex-col items-center">
+                <canvas id="laser-canvas" class="bg-black/95 rounded-2xl w-full h-[250px] sm:h-[350px] shadow-inner border border-white/5"></canvas>
               </div>
-              <div class="mt-3 flex flex-wrap justify-between w-full px-4 font-mono text-sm gap-2">
-                 <div class="bg-black/50 px-3 py-1 rounded text-brand-blue">Photons: <span id="stat-photons">0</span></div>
-                 <div class="bg-black/50 px-3 py-1 rounded text-green-400">Inversion: <span id="stat-inversion">Low</span></div>
-                 <div class="bg-black/50 px-3 py-1 rounded text-brand-red">Output: <span id="stat-output">0 mW</span></div>
+              <div class="mt-6 grid grid-cols-3 w-full gap-2 sm:gap-4 font-bold text-[10px] sm:text-xs">
+                 <div class="bg-white/5 p-3 rounded-xl text-brand-blue border border-brand-blue/10 flex flex-col items-center">
+                   <span class="opacity-50 uppercase mb-1">Photons</span>
+                   <span id="stat-photons" class="text-lg font-mono">0</span>
+                 </div>
+                 <div class="bg-white/5 p-3 rounded-xl text-green-400 border border-green-500/10 flex flex-col items-center">
+                   <span class="opacity-50 uppercase mb-1">Inversion</span>
+                   <span id="stat-inversion" class="text-lg font-mono">Low</span>
+                 </div>
+                 <div class="bg-white/5 p-3 rounded-xl text-brand-red border border-brand-red/10 flex flex-col items-center">
+                   <span class="opacity-50 uppercase mb-1">Output</span>
+                   <span id="stat-output" class="text-lg font-mono">0mW</span>
+                 </div>
               </div>
             </div>
 
-            <!-- Real-Time Graph -->
-            <div class="glassmorphism rounded-3xl p-5">
-              <div class="flex justify-between items-center mb-3">
-                <h3 class="text-lg font-bold">📈 Output Power vs Reading #</h3>
-                <span class="text-xs opacity-60 font-mono">Live from simulator controls</span>
+            <!-- Output Chart -->
+            <div class="modern-card p-4 sm:p-8">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-gray-500/10 pb-4">
+                <h3 class="text-xl font-bold flex items-center gap-2">📈 Power Profile <span class="text-[10px] font-normal bg-brand-purple/10 text-brand-purple px-2 py-0.5 rounded uppercase tracking-widest hidden sm:inline">Real-time Analysis</span></h3>
+                <span class="text-[10px] opacity-40 font-mono tracking-tighter uppercase sm:text-xs">Dynamic Output Analysis</span>
               </div>
-              <canvas id="graph-canvas" class="w-full h-[220px] md:h-[280px] rounded-xl"></canvas>
+              <div class="w-full overflow-hidden">
+                <canvas id="graph-canvas" class="w-full h-[200px] sm:h-[300px]"></canvas>
+              </div>
             </div>
 
-            <!-- Readings Table -->
-            <div class="glassmorphism rounded-3xl p-5 overflow-x-auto">
-              <h3 class="text-lg font-bold mb-3">📋 Observation Table</h3>
-              <table class="w-full text-sm text-left border-collapse">
-                <thead>
-                  <tr class="border-b border-gray-500/30 text-xs uppercase tracking-wider opacity-70">
-                    <th class="py-2 px-3">#</th>
-                    <th class="py-2 px-3">Wavelength</th>
-                    <th class="py-2 px-3">Pump Power</th>
-                    <th class="py-2 px-3">Medium</th>
-                    <th class="py-2 px-3">Mirror Align.</th>
-                    <th class="py-2 px-3">Photons</th>
-                    <th class="py-2 px-3">Output (mW)</th>
-                  </tr>
-                </thead>
-                <tbody id="readings-tbody">
-                  <tr><td colspan="7" class="py-6 text-center opacity-50 italic">Run the simulator and click "Add Reading" to log data.</td></tr>
-                </tbody>
-              </table>
+            <!-- Observations -->
+            <div class="modern-card p-0 overflow-hidden">
+              <div class="p-6 border-b border-gray-500/10">
+                <h3 class="text-xl font-bold flex items-center gap-2">📋 Observation Logs</h3>
+              </div>
+              <div class="overflow-x-auto hide-scrollbar">
+                <table class="w-full text-sm text-left whitespace-nowrap">
+                  <thead>
+                    <tr class="bg-white/[0.02] text-[10px] uppercase font-black tracking-widest opacity-40 text-current">
+                      <th class="py-4 px-6">ID</th>
+                      <th class="py-4 px-2">λ (nm)</th>
+                      <th class="py-4 px-2">Power</th>
+                      <th class="py-4 px-2">Medium</th>
+                      <th class="py-4 px-2">Mirror</th>
+                      <th class="py-4 px-2">Photons</th>
+                      <th class="py-4 px-6 text-right">Output</th>
+                    </tr>
+                  </thead>
+                  <tbody id="readings-tbody" class="divide-y divide-gray-500/10">
+                    <tr><td colspan="7" class="py-12 text-center text-muted italic">Awaiting experimental data...</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -210,149 +237,124 @@
     </section>
 
     <!-- ======== Theory Section ======== -->
-    <section id="theory" class="min-h-screen py-24 px-4 sm:px-8">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold font-[Outfit] mb-4">Core <span class="text-brand-blue text-glow-blue">Principles & Theory</span></h2>
-          <p class="text-xl max-w-3xl mx-auto italic">Understanding the fundamental physics and engineering of Laser systems.</p>
+    <section id="theory" class="py-20 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto space-y-12 sm:space-y-20">
+        <div class="text-center space-y-4">
+          <h2 class="text-3xl sm:text-5xl font-bold font-[Outfit]">Core <span class="text-brand-blue text-glow-blue">Principles</span></h2>
+          <p class="text-lg opacity-60 max-w-2xl mx-auto italic">Bridging the gap between theory and virtual experimentation.</p>
         </div>
 
-        <!-- Basic Principles -->
-        <div class="mb-16">
-          <h3 class="text-3xl font-bold mb-8 border-l-4 border-brand-red pl-4">1. Basic Principles of Laser</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="space-y-4 opacity-90 leading-relaxed">
-              <p><strong class="text-brand-red">Spontaneous Emission:</strong> An atom in an excited state returns to a lower state naturally, emitting a photon in a random direction and phase.</p>
-              <p><strong class="text-brand-blue">Stimulated Emission:</strong> The key to laser action. An external photon triggers an excited atom to emit a second photon that is identical in phase, frequency, and direction.</p>
-              <p><strong class="text-green-400">Population Inversion:</strong> Achieving a state where the number of atoms in a higher energy level exceeds those in the lower level. This ensures that stimulation dominates over absorption.</p>
-            </div>
-            <div class="glassmorphism p-6 rounded-2xl bg-black/40">
-              <div class="h-48 flex items-center justify-around relative">
-                <div class="text-center">
-                  <div class="w-12 h-12 rounded-full border-2 border-dashed border-white/30 flex items-center justify-center mb-2 mx-auto">
-                    <div class="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
-                  </div>
-                  <span class="text-xs">Excited State</span>
-                </div>
-                <div class="text-2xl animate-bounce">→</div>
-                <div class="text-center">
-                  <div class="w-12 h-12 rounded-full border-2 border-white/60 flex items-center justify-center mb-2 mx-auto">
-                    <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
-                  </div>
-                  <span class="text-xs">Ground State</span>
-                </div>
-                <div class="absolute right-0 top-1/2 -translate-y-1/2 flex gap-4">
-                   <div class="w-3 h-3 bg-red-500 rounded-full shadow-[0_0_10px_red] animate-[ping_1.5s_infinite]"></div>
-                   <div class="w-3 h-3 bg-red-500 rounded-full shadow-[0_0_10px_red] animate-[ping_1.5s_infinite_0.5s]"></div>
-                </div>
+        <!-- Principles Grid -->
+        <div class="space-y-12">
+          <!-- Item 1 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
+            <div class="space-y-6 order-2 md:order-1">
+              <h3 class="text-2xl sm:text-3xl font-bold border-l-4 border-brand-red pl-4">1. Stimulated Emission</h3>
+              <p class="text-muted leading-relaxed">
+                The cornerstone of laser operation. An incident photon of specific energy interacts with an excited atom, prompting it to release an identical second photon. This produces a coherent stream of light where all photons share the same phase and direction.
+              </p>
+              <div class="flex gap-4">
+                <span class="bg-brand-red/10 text-brand-red px-3 py-1 rounded-full text-xs font-bold uppercase">Coherence</span>
+                <span class="bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full text-xs font-bold uppercase">Amplification</span>
               </div>
-              <p class="text-center text-xs mt-4 opacity-60 italic">Visualizing Stimulated Emission: One photon in, two identical photons out.</p>
+            </div>
+            <div class="modern-card bg-black/40 h-64 md:h-80 flex items-center justify-center relative overflow-hidden order-1 md:order-2">
+               <!-- Animated Concept -->
+               <div class="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-transparent"></div>
+               <div class="relative flex items-center justify-around w-full max-w-xs scale-75 sm:scale-100">
+                  <div class="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center">
+                    <div class="w-6 h-6 bg-brand-red rounded-full animate-ping"></div>
+                  </div>
+                  <div class="text-4xl">✨</div>
+                  <div class="space-x-2 flex">
+                    <div class="w-4 h-4 bg-brand-red rounded-full shadow-[0_0_15px_red] animate-[bounce_2s_infinite]"></div>
+                    <div class="w-4 h-4 bg-brand-red rounded-full shadow-[0_0_15px_red] animate-[bounce_2s_infinite_100ms]"></div>
+                  </div>
+               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Elements of Laser -->
-        <div class="mb-16">
-          <h3 class="text-3xl font-bold mb-8 border-l-4 border-brand-blue pl-4">2. Elements of a Laser System</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glassmorphism p-6 rounded-2xl hover:border-brand-red transition-all">
-              <h4 class="text-xl font-bold mb-3 text-brand-red">Active Medium</h4>
-              <p class="text-sm opacity-80">The substance (gas, liquid, solid) where population inversion takes place. E.g., Ruby crystal, He-Ne gas mixture.</p>
+          <!-- Item 2 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
+            <div class="modern-card bg-black/40 h-64 md:h-80 flex items-center justify-center relative overflow-hidden">
+               <div class="absolute inset-0 bg-gradient-to-bl from-brand-blue/10 to-transparent"></div>
+               <div class="flex flex-col gap-4 items-center">
+                  <div class="flex gap-2">
+                    <div class="w-5 h-5 bg-brand-blue rounded-full"></div>
+                    <div class="w-5 h-5 bg-brand-blue rounded-full"></div>
+                    <div class="w-5 h-5 bg-brand-blue rounded-full"></div>
+                  </div>
+                  <div class="w-full h-px bg-white/20"></div>
+                  <div class="flex gap-2 opacity-30">
+                    <div class="w-5 h-5 bg-gray-500 rounded-full"></div>
+                  </div>
+               </div>
             </div>
-            <div class="glassmorphism p-6 rounded-2xl hover:border-brand-blue transition-all">
-              <h4 class="text-xl font-bold mb-3 text-brand-blue">Pumping Source</h4>
-              <p class="text-sm opacity-80">The energy supplier that excites the atoms to higher energy levels. Methods include optical, electrical, or chemical pumping.</p>
-            </div>
-            <div class="glassmorphism p-6 rounded-2xl hover:border-purple-500 transition-all">
-              <h4 class="text-xl font-bold mb-3 text-purple-400">Optical Resonator</h4>
-              <p class="text-sm opacity-80">A pair of mirrors (one fully reflecting, one partially) that bounce photons back and forth to sustain amplification.</p>
+            <div class="space-y-6">
+              <h3 class="text-2xl sm:text-3xl font-bold border-l-4 border-brand-blue pl-4">2. Population Inversion</h3>
+              <p class="text-muted leading-relaxed">
+                Achieving a state where more atoms occupy the excited state than the ground state. This is essential because, under normal conditions, absorption would outweigh emission. We use external energy (pumping) to tip the scales.
+              </p>
+              <div class="flex gap-4">
+                <span class="bg-brand-purple/10 text-brand-purple px-3 py-1 rounded-full text-xs font-bold uppercase">Energy State</span>
+                <span class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold uppercase">Meta-stable</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Characteristics of Laser -->
-        <div class="mb-16">
-          <h3 class="text-3xl font-bold mb-8 border-l-4 border-green-400 pl-4">3. Characteristics of Laser Light</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white/5 p-4 rounded-xl text-center">
-              <span class="block text-2xl mb-1">🎯</span>
-              <span class="font-bold block">Coherence</span>
-              <span class="text-xs opacity-60">Identical Phase</span>
-            </div>
-            <div class="bg-white/5 p-4 rounded-xl text-center">
-              <span class="block text-2xl mb-1">🌈</span>
-              <span class="font-bold block">Monochromaticity</span>
-              <span class="text-xs opacity-60">Single Color</span>
-            </div>
-            <div class="bg-white/5 p-4 rounded-xl text-center">
-              <span class="block text-2xl mb-1">📏</span>
-              <span class="font-bold block">Directionality</span>
-              <span class="text-xs opacity-60">Pencil Beam</span>
-            </div>
-            <div class="bg-white/5 p-4 rounded-xl text-center">
-              <span class="block text-2xl mb-1">🔥</span>
-              <span class="font-bold block">Intensity</span>
-              <span class="text-xs opacity-60">High Focus</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- He-Ne Laser -->
-        <div class="mb-16">
-          <h3 class="text-3xl font-bold mb-8 border-l-4 border-brand-red pl-4">4. He-Ne Laser (Gas Laser)</h3>
-          <div class="glassmorphism p-8 rounded-3xl">
-            <p class="mb-6 opacity-90 leading-relaxed">
-              The <strong>Helium-Neon (He-Ne) laser</strong> is a popular continuous-wave gas laser. It typically emits red light at 632.8 nm.
-              The gas mixture consists of about 10 parts Helium and 1 part Neon at low pressure. 
-              <br><br>
-              <strong class="text-brand-red">The Process:</strong> Electrical discharge excites Helium atoms to metastable states. These Helium atoms then collide with Neon atoms, transferring energy and creating a population inversion in Neon, which leads to laser emission.
-            </p>
-            <div class="h-1 bg-gradient-to-r from-transparent via-brand-red to-transparent my-6"></div>
-            <p class="text-center italic opacity-70">He-Ne is highly stable and used extensively in alignment, holography, and barcode scanning.</p>
+          <!-- He-Ne Specific -->
+          <div class="modern-card bg-gradient-to-r from-brand-red/5 to-brand-blue/5 p-8 sm:p-12 relative overflow-hidden">
+             <div class="max-w-3xl mx-auto space-y-6 text-center">
+                <h3 class="text-2xl sm:text-4xl font-bold">He-Ne Laser System</h3>
+                <p class="text-muted text-sm sm:text-lg">
+                  The Helium-Neon laser uses a gas mixture where Helium acts as the excitation carrier. Through inter-atomic collisions, energy is transferred to Neon atoms, causing them to lase at a stable 632.8 nm red beam.
+                </p>
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-xs sm:text-sm font-mono italic">
+                  Gas Mixture: 10:1 (He:Ne)
+                </div>
+             </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======== Applications section ======== -->
-    <section id="applications" class="min-h-screen py-24 px-4 sm:px-8 bg-black/5">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold font-[Outfit] mb-4">Real-World <span class="text-purple-400 text-glow-blue">Applications</span></h2>
-          <p class="text-xl max-w-3xl mx-auto italic">How Laser technology transforms modern industries and life.</p>
+    <section id="applications" class="py-20 px-4 sm:px-6 bg-black/[0.02]">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center space-y-4">
+          <h2 class="text-3xl sm:text-5xl font-bold font-[Outfit]">Global <span class="text-brand-purple text-glow-blue">Applications</span></h2>
+          <p class="text-lg opacity-60">From micro-electronics to life-saving medical procedures.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Medical -->
-          <div class="glassmorphism p-8 rounded-3xl group hover:bg-white/5 transition-all">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🏥</div>
-            <h3 class="text-2xl font-bold mb-4 text-brand-red">Medical Applications</h3>
-            <ul class="space-y-3 opacity-80 text-sm">
-              <li>• <strong class="text-white">Surgery:</strong> Bloodless scalpel for precise incisions.</li>
-              <li>• <strong class="text-white">Ophthalmology:</strong> Correcting vision (LASIK) and retinal repair.</li>
-              <li>• <strong class="text-white">Dermatology:</strong> Tattoo removal and skin resurfacing.</li>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Med -->
+          <div class="modern-card group hover:-translate-y-2 transition-all p-8 space-y-6 border-t-4 border-brand-red">
+            <div class="w-16 h-16 rounded-2xl bg-brand-red/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🏥</div>
+            <h3 class="text-2xl font-bold">Medical Science</h3>
+            <ul class="space-y-4 text-muted text-sm leading-relaxed">
+              <li class="flex gap-2"><span>•</span> Precise bloodless surgery (scalpels).</li>
+              <li class="flex gap-2"><span>•</span> Vision correction (LASIK techniques).</li>
+              <li class="flex gap-2"><span>•</span> Photodynamic therapy for dermatology.</li>
             </ul>
           </div>
-
-          <!-- Industrial -->
-          <div class="glassmorphism p-8 rounded-3xl group hover:bg-white/5 transition-all">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🏭</div>
-            <h3 class="text-2xl font-bold mb-4 text-brand-blue">Industrial Applications</h3>
-            <ul class="space-y-3 opacity-80 text-sm">
-              <li>• <strong class="text-white">Precision Cutting:</strong> High-speed cutting of metals and fabrics.</li>
-              <li>• <strong class="text-white">Laser Welding:</strong> Strong, localized bonding for automotive/aerospace.</li>
-              <li>• <strong class="text-white">3D Printing:</strong> SLS (Selective Laser Sintering) for complex parts.</li>
+          <!-- Indu -->
+          <div class="modern-card group hover:-translate-y-2 transition-all p-8 space-y-6 border-t-4 border-brand-blue">
+            <div class="w-16 h-16 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🏭</div>
+            <h3 class="text-2xl font-bold">Industrial & Tech</h3>
+            <ul class="space-y-4 text-muted text-sm leading-relaxed">
+              <li class="flex gap-2"><span>•</span> Ultra-precise CNC laser cutting.</li>
+              <li class="flex gap-2"><span>•</span> 3D Printing (Sintering) complex metals.</li>
+              <li class="flex gap-2"><span>•</span> Optical fiber communication networks.</li>
             </ul>
           </div>
-
-          <!-- Holography -->
-          <div class="glassmorphism p-8 rounded-3xl group hover:bg-white/5 transition-all">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🌌</div>
-            <h3 class="text-2xl font-bold mb-4 text-purple-400">Holography-Recording</h3>
-            <ul class="space-y-3 opacity-80 text-sm">
-              <li>• <strong class="text-white">Principle:</strong> Recording the interference pattern of laser light.</li>
-              <li>• <strong class="text-white">Usage:</strong> Securing ID cards and currency.</li>
-              <li>• <strong class="text-white">Future:</strong> Truly 3D cinematic and educational displays.</li>
+          <!-- Holo -->
+          <div class="modern-card group hover:-translate-y-2 transition-all p-8 space-y-6 border-t-4 border-brand-purple">
+            <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🎭</div>
+            <h3 class="text-2xl font-bold">Holography</h3>
+            <ul class="space-y-4 text-muted text-sm leading-relaxed">
+              <li class="flex gap-2"><span>•</span> High-security 3D optical encryption.</li>
+              <li class="flex gap-2"><span>•</span> Advanced biomedical 3D imaging.</li>
+              <li class="flex gap-2"><span>•</span> Digital data storage in 3D volumes.</li>
             </ul>
           </div>
         </div>
@@ -360,96 +362,96 @@
     </section>
 
     <!-- ======== Quiz Section ======== -->
-    <section id="quiz" class="min-h-screen py-24 px-4 sm:px-8 relative">
-       <div class="max-w-4xl mx-auto w-full glassmorphism p-8 md:p-12 rounded-3xl">
-          <div class="text-center mb-10">
-            <h2 class="text-4xl md:text-5xl font-bold font-[Outfit] mb-4">Educational <span class="text-brand-red text-glow-red">Quiz</span></h2>
-            <p class="text-lg opacity-80" id="quiz-status">Test your knowledge of Laser Physics.</p>
+    <section id="quiz" class="py-20 px-4 sm:px-6">
+       <div class="max-w-4xl mx-auto w-full modern-card p-6 sm:p-12 sm:rounded-[2.5rem] bg-gradient-to-b from-transparent to-brand-red/[0.02]">
+          <div class="text-center mb-10 space-y-4">
+            <h2 class="text-3xl sm:text-5xl font-bold font-[Outfit]">Knowledge <span class="text-brand-red text-glow-red">Lab</span></h2>
+            <p class="text-lg opacity-60">Validate your understanding of laser dynamics.</p>
           </div>
 
           <div id="quiz-container" class="relative">
-             <!-- Intro Screen -->
-             <div id="quiz-intro" class="text-center py-10">
-                <p class="mb-8 text-xl">Answer 5 high-impact questions to measure your progress.</p>
-                <button id="start-quiz-btn" class="px-8 py-4 rounded-full font-bold text-white bg-brand-red hover:bg-red-600 box-glow-red transition-transform hover:scale-105 inline-block">
-                  Launch Quiz
+             <!-- Intro -->
+             <div id="quiz-intro" class="text-center py-6 sm:py-12 space-y-8">
+                <p class="text-lg sm:text-2xl font-light">Short assessment: 5 technical questions. ready?</p>
+                <button id="start-quiz-btn" class="w-full sm:w-auto px-12 py-5 rounded-2xl font-black text-white bg-brand-red hover:bg-red-600 box-glow-red hover:scale-105 transition-all text-xl uppercase tracking-widest">
+                  Start Quiz
                 </button>
              </div>
 
-             <!-- Active Quiz Area -->
-             <div id="quiz-active" class="hidden">
-               <div class="flex justify-between items-center mb-6 text-sm font-bold border-b border-gray-500/30 pb-4">
-                 <div>Step: <span id="q-counter" class="text-brand-blue">1/5</span></div>
-                 <div class="flex items-center gap-2">
-                   <svg class="w-4 h-4 text-brand-red animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/></svg>
-                   <span id="q-timer" class="text-brand-red font-mono text-xl">30</span>s
+             <!-- Active -->
+             <div id="quiz-active" class="hidden space-y-8">
+               <div class="flex justify-between items-center text-sm font-bold opacity-60 uppercase tracking-widest">
+                 <div class="bg-white/5 px-4 py-2 rounded-lg">Question <span id="q-counter" class="text-brand-red">1/5</span></div>
+                 <div class="bg-brand-red/10 px-4 py-2 rounded-lg text-brand-red flex items-center gap-2">
+                   <span class="animate-pulse">⏱️</span> <span id="q-timer" class="font-mono text-xl">30</span>s
                  </div>
                </div>
 
-               <h3 id="question-text" class="text-2xl font-bold mb-8 min-h-[80px] leading-snug">...</h3>
+               <div class="py-6 sm:py-10">
+                 <h3 id="question-text" class="text-xl sm:text-3xl font-bold leading-snug">...</h3>
+               </div>
 
-               <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <!-- Options injected here -->
+               <div id="options-container" class="grid grid-cols-1 gap-4">
+                  <!-- Options injected -->
                </div>
                
-               <div class="mt-8 flex justify-end">
-                 <button id="next-q-btn" class="hidden px-8 py-3 bg-brand-blue text-white rounded-full font-bold hover:bg-blue-600 transition-all flex items-center gap-2">
-                   Next Question <span class="text-xl">→</span>
-                 </button>
+               <div class="pt-6 flex justify-end">
+                 <button id="next-q-btn" class="hidden px-10 py-4 bg-brand-blue text-white rounded-xl font-bold hover:bg-blue-600 shadow-xl transition-all">Next Question →</button>
                </div>
              </div>
 
-             <!-- Result Area -->
-             <div id="quiz-result" class="hidden text-center py-10">
-                <h3 class="text-4xl font-bold mb-4">Performance Report</h3>
-                <p class="text-2xl mb-2">Accuracy: <span id="final-score" class="text-brand-blue font-bold text-5xl">0/5</span></p>
+             <!-- Result -->
+             <div id="quiz-result" class="hidden text-center py-10 space-y-8">
+                <h3 class="text-3xl sm:text-5xl font-bold">Report Summary</h3>
+                <div class="py-8">
+                  <div class="text-[clamp(4rem,15vw,8rem)] font-black text-brand-blue leading-none" id="final-score">0/5</div>
+                  <p class="text-xl font-bold opacity-50 uppercase tracking-tighter">Accurate Responses</p>
+                </div>
                 
-                <div class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded-full mb-8 overflow-hidden max-w-md mx-auto mt-6">
-                  <div id="score-bar" class="h-full bg-gradient-to-r from-brand-red to-brand-blue w-0 transition-all duration-1000"></div>
+                <div class="h-4 w-full bg-black/10 dark:bg-white/5 rounded-full overflow-hidden max-w-sm mx-auto p-1">
+                  <div id="score-bar" class="h-full bg-gradient-to-r from-brand-red to-brand-blue rounded-full w-0 transition-all duration-1000"></div>
                 </div>
 
-                <!-- Review Section -->
-                <div id="quiz-review" class="text-left mb-10 max-h-64 overflow-y-auto p-4 glassmorphism rounded-xl text-sm space-y-4">
-                  <!-- Review content injected via JS -->
+                <div id="quiz-review" class="text-left space-y-4 max-h-[40vh] overflow-y-auto px-4 py-6 modern-card !bg-black/5 dark:!bg-white/5 text-sm">
+                  <!-- Review content injected -->
                 </div>
 
-                <div class="flex flex-wrap gap-4 justify-center">
-                  <button id="restart-quiz-btn" class="px-8 py-3 border-2 border-brand-red text-brand-red font-bold rounded-full hover:bg-brand-red hover:text-white transition-all">
-                    Retake Quiz
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                  <button id="restart-quiz-btn" class="px-10 py-4 border-2 border-brand-red text-brand-red font-bold rounded-2xl hover:bg-brand-red hover:text-white transition-all uppercase tracking-widest text-sm">
+                    Retake Exam
                   </button>
-                  <a href="#simulator" class="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full transition-all">
-                    Return to Lab
-                  </a>
+                  <a href="#simulator" class="px-10 py-4 bg-white/5 hover:bg-white/10 font-bold rounded-2xl transition-all text-sm uppercase">To Simulator</a>
                 </div>
              </div>
           </div>
        </div>
     </section>
 
-    <footer class="py-16 glassmorphism border-t border-glass-border-light dark:border-glass-border-dark mt-20">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <h4 class="text-xl font-bold font-[Outfit] mb-6 tracking-wide uppercase opacity-90">
-             ACTIVITY 1 - SIMULATOR MADE BY:
-        </h4>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto">
-             <div class="space-y-1">
-               <div class="text-brand-red font-bold">IT1203</div>
-               <div class="text-sm opacity-80 uppercase tracking-tighter">SOHAM BAHIRAT</div>
+    <!-- Footer -->
+    <footer class="py-20 border-t border-gray-500/10">
+      <div class="max-w-7xl mx-auto px-6 text-center space-y-12">
+        <div class="space-y-4">
+          <h4 class="text-sm font-black uppercase tracking-[0.3em] opacity-40">Development Credits</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+             <div class="p-6 modern-card !rounded-2xl space-y-1 group hover:scale-105 transition-all">
+               <div class="text-brand-red font-black text-lg">IT1203</div>
+               <div class="text-[10px] font-bold opacity-60 uppercase tracking-widest">SOHAM BAHIRAT</div>
              </div>
-             <div class="space-y-1">
-               <div class="text-brand-blue font-bold">IT1207</div>
-               <div class="text-sm opacity-80 uppercase tracking-tighter">ROHAN DAMARE</div>
+             <div class="p-6 modern-card !rounded-2xl space-y-1 group hover:scale-105 transition-all">
+               <div class="text-brand-blue font-black text-lg">IT1207</div>
+               <div class="text-[10px] font-bold opacity-60 uppercase tracking-widest">ROHAN DAMARE</div>
              </div>
-             <div class="space-y-1">
-               <div class="text-brand-red font-bold">IT1203</div>
-               <div class="text-sm opacity-80 uppercase tracking-tighter">SHLOK KAKADE</div>
+             <div class="p-6 modern-card !rounded-2xl space-y-1 group hover:scale-105 transition-all">
+               <div class="text-brand-red font-black text-lg">IT1219</div>
+               <div class="text-[10px] font-bold opacity-60 uppercase tracking-widest">SHLOK KAKADE</div>
              </div>
-             <div class="space-y-1">
-               <div class="text-brand-blue font-bold">IT1220</div>
-               <div class="text-sm opacity-80 uppercase tracking-tighter">SUMIT KALE</div>
+             <div class="p-6 modern-card !rounded-2xl space-y-1 group hover:scale-105 transition-all">
+               <div class="text-brand-blue font-black text-lg">IT1220</div>
+               <div class="text-[10px] font-bold opacity-60 uppercase tracking-widest">SUMIT KALE</div>
              </div>
+          </div>
         </div>
-        <p class="opacity-40 text-xs tracking-widest">&copy; 2026 Laser Technology Simulator. All Rights Reserved.</p>
+        <p class="text-[10px] uppercase font-bold tracking-[0.5em] opacity-20">&copy; 2026 Laser Physics Simulator • Activity 1 • Virtual Lab</p>
       </div>
     </footer>
 
