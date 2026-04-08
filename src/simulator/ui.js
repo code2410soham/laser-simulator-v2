@@ -21,6 +21,10 @@ export function initSimulator() {
   const statPhotons = document.getElementById('stat-photons');
   const statInversion = document.getElementById('stat-inversion');
   const statOutput = document.getElementById('stat-output');
+  const statIntensity = document.getElementById('stat-intensity');
+  const statCoherence = document.getElementById('stat-coherence');
+  const statDirection = document.getElementById('stat-direction');
+  const statDensity = document.getElementById('stat-density');
 
   // Table and Reading controls
   const btnAddReading = document.getElementById('add-reading-btn');
@@ -43,6 +47,10 @@ export function initSimulator() {
       statPhotons.textContent = "0";
       statInversion.textContent = "Low";
       statOutput.textContent = "0 mW";
+      statIntensity.textContent = "0%";
+      statCoherence.textContent = "0%";
+      statDirection.textContent = "None";
+      statDensity.textContent = "0";
     }
   });
 
@@ -94,7 +102,11 @@ export function initSimulator() {
       <td class="py-2 px-3">${mediumText}</td>
       <td class="py-2 px-3">${sim.params.mirrorAlignment}%</td>
       <td class="py-2 px-3">${sim.stats.photonCount}</td>
-      <td class="py-2 px-3 font-mono text-brand-red font-bold">${outputRounded}</td>
+      <td class="py-2 px-3">${sim.stats.intensity}%</td>
+      <td class="py-2 px-3">${sim.stats.coherence}%</td>
+      <td class="py-2 px-3 text-[10px] uppercase font-bold text-cyan-500">${sim.stats.direction}</td>
+      <td class="py-2 px-3 opacity-60">${sim.stats.density}</td>
+      <td class="py-2 px-3 font-mono text-brand-red font-bold text-right">${outputRounded}</td>
     `;
     tableBody.appendChild(row);
 
@@ -104,7 +116,7 @@ export function initSimulator() {
 
   btnClearReadings.addEventListener('click', () => {
     readingCount = 0;
-    tableBody.innerHTML = `<tr><td colspan="7" class="py-6 text-center opacity-50 italic">Run the simulator and click "Add Reading" to log data.</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="11" class="py-6 text-center opacity-50 italic">Run the simulator and click "Add Reading" to log data.</td></tr>`;
     clearGraphReadings();
   });
 
@@ -115,8 +127,14 @@ export function initSimulator() {
       const invPct = Math.round(sim.stats.inversion * 100);
       statInversion.textContent = invPct > 50 ? "High" : "Low";
       statOutput.textContent = `${Math.round(sim.stats.output)} mW`;
+      statIntensity.textContent = `${sim.stats.intensity}%`;
+      statCoherence.textContent = `${sim.stats.coherence}%`;
+      statDirection.textContent = sim.stats.direction;
+      statDensity.textContent = sim.stats.density;
     }
-    requestAnimationFrame(updateStats);
+    setTimeout(() => {
+        requestAnimationFrame(updateStats);
+    }, sim.running ? 0 : 200); // Throttled if idle
   }
   updateStats();
 }

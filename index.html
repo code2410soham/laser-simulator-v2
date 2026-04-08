@@ -43,6 +43,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
               </svg>
             </button>
+            <button id="start-tour-btn" class="p-2.5 rounded-xl hover:bg-white/10 smooth-transition focus:outline-none flex items-center gap-2 group" title="Site Guide">
+              <span class="w-5 h-5 flex items-center justify-center rounded-full border-2 border-current font-bold text-[10px] group-hover:bg-brand-blue group-hover:border-brand-blue group-hover:text-white transition-all">?</span>
+            </button>
           </div>
 
           <!-- Mobile Actions -->
@@ -179,24 +182,91 @@
               <div id="canvas-container" class="w-full h-full relative flex flex-col items-center">
                 <canvas id="laser-canvas" class="bg-black/95 rounded-2xl w-full h-[250px] sm:h-[350px] shadow-inner border border-white/5"></canvas>
               </div>
-              <div class="mt-6 grid grid-cols-3 w-full gap-2 sm:gap-4 font-bold text-[10px] sm:text-xs">
-                 <div class="bg-white/5 p-3 rounded-xl text-brand-blue border border-brand-blue/10 flex flex-col items-center">
-                   <span class="opacity-50 uppercase mb-1">Photons</span>
-                   <span id="stat-photons" class="text-lg font-mono">0</span>
+              <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 w-full gap-2 sm:gap-4 font-bold text-[10px] sm:text-xs">
+                 <div id="tour-photons" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-brand-blue border border-brand-blue/20 flex flex-col items-center">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Photons</span>
+                   <span id="stat-photons" class="text-lg font-mono text-blue-700 dark:text-brand-blue">0</span>
                  </div>
-                 <div class="bg-white/5 p-3 rounded-xl text-green-400 border border-green-500/10 flex flex-col items-center">
-                   <span class="opacity-50 uppercase mb-1">Inversion</span>
+                 <div id="tour-inversion" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-green-600 dark:text-green-400 border border-green-500/20 flex flex-col items-center">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Inversion</span>
                    <span id="stat-inversion" class="text-lg font-mono">Low</span>
                  </div>
-                 <div class="bg-white/5 p-3 rounded-xl text-brand-red border border-brand-red/10 flex flex-col items-center">
-                   <span class="opacity-50 uppercase mb-1">Output</span>
-                   <span id="stat-output" class="text-lg font-mono">0mW</span>
+                 <div id="tour-output" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-brand-red border border-brand-red/20 flex flex-col items-center">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Output</span>
+                   <span id="stat-output" class="text-lg font-mono text-red-600 dark:text-brand-red">0mW</span>
+                 </div>
+                 <div id="tour-intensity" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-purple-600 dark:text-brand-purple border border-brand-purple/20 flex flex-col items-center">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Intensity</span>
+                   <span id="stat-intensity" class="text-lg font-mono">0%</span>
+                 </div>
+                 <div id="tour-coherence" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-yellow-600 dark:text-yellow-400 border border-yellow-500/20 flex flex-col items-center">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Coherence</span>
+                   <span id="stat-coherence" class="text-lg font-mono">0%</span>
+                 </div>
+                 <div id="tour-direction" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 flex flex-col items-center">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Direction</span>
+                   <span id="stat-direction" class="text-lg font-mono">None</span>
+                 </div>
+                 <div id="tour-density" class="bg-black/5 dark:bg-white/5 p-3 rounded-xl text-orange-600 dark:text-orange-400 border border-orange-500/20 flex flex-col items-center col-span-2 sm:col-span-1">
+                   <span class="opacity-40 dark:opacity-50 uppercase mb-1">Density</span>
+                   <span id="stat-density" class="text-lg font-mono">0</span>
                  </div>
               </div>
             </div>
 
+            <!-- Dashboard Formulas Section -->
+            <div id="formulas" class="modern-card p-6 sm:p-10 space-y-8 bg-gradient-to-br from-brand-red/[0.03] to-brand-blue/[0.03]">
+              <div class="border-b border-gray-500/10 pb-4">
+                <h3 class="text-2xl font-bold font-[Outfit] flex items-center gap-3">
+                  <span class="p-2 bg-brand-red/10 rounded-lg text-lg">π</span> 
+                  DashBoard Mathematical Formulas
+                </h3>
+                <p class="text-sm opacity-60 mt-2">How we obtain real-time metrics in this physical simulation.</p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Intensity -->
+                <div class="space-y-3 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-red/20 transition-all">
+                  <h4 class="font-bold text-brand-red uppercase text-xs tracking-widest">1. Intensity Calculation</h4>
+                  <div class="font-mono text-lg bg-black/20 p-3 rounded-lg flex items-center justify-center">
+                     I = (N<sub>p</sub> / N<sub>max</sub>) × 100
+                  </div>
+                  <p class="text-[11px] opacity-70 italic">Where N<sub>p</sub> is the current photon count and N<sub>max</sub> is the saturation limit (500 photons).</p>
+                </div>
+
+                <!-- Coherence -->
+                <div class="space-y-3 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-blue/20 transition-all">
+                  <h4 class="font-bold text-brand-blue uppercase text-xs tracking-widest">2. Coherence Factor</h4>
+                  <div class="font-mono text-lg bg-black/20 p-3 rounded-lg flex items-center justify-center">
+                     C = α × (L / D)
+                  </div>
+                  <p class="text-[11px] opacity-70 italic">Alignment factor (α) proportional to mirror stability and cavity length (L) vs divergence (D).</p>
+                </div>
+
+                <!-- Direction -->
+                <div class="space-y-3 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-purple/20 transition-all">
+                  <h4 class="font-bold text-brand-purple uppercase text-xs tracking-widest">3. Beam Directionality</h4>
+                  <div class="p-3 bg-black/20 rounded-lg text-[10px] space-y-1">
+                     <div class="flex justify-between"><span>α > 95%</span> <span class="text-green-400">Collimated</span></div>
+                     <div class="flex justify-between"><span>α > 70%</span> <span class="text-yellow-400">Divergent</span></div>
+                     <div class="flex justify-between"><span>α < 70%</span> <span class="text-red-400">Scattered</span></div>
+                  </div>
+                  <p class="text-[11px] opacity-70 italic">Calculated based on the angular spread relative to the optical axis.</p>
+                </div>
+
+                <!-- Density -->
+                <div class="space-y-3 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-400/20 transition-all">
+                  <h4 class="font-bold text-orange-400 uppercase text-xs tracking-widest">4. Photon Density</h4>
+                  <div class="font-mono text-lg bg-black/20 p-3 rounded-lg flex items-center justify-center">
+                     ρ = N<sub>p</sub> / (W × H)
+                  </div>
+                  <p class="text-[11px] opacity-70 italic">The number of active photons per unit area of the laser tube.</p>
+                </div>
+              </div>
+            </div>
+
             <!-- Output Chart -->
-            <div class="modern-card p-4 sm:p-8">
+            <div id="tour-chart" class="modern-card p-4 sm:p-8">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-gray-500/10 pb-4">
                 <h3 class="text-xl font-bold flex items-center gap-2">📈 Power Profile <span class="text-[10px] font-normal bg-brand-purple/10 text-brand-purple px-2 py-0.5 rounded uppercase tracking-widest hidden sm:inline">Real-time Analysis</span></h3>
                 <span class="text-[10px] opacity-40 font-mono tracking-tighter uppercase sm:text-xs">Dynamic Output Analysis</span>
@@ -221,6 +291,10 @@
                       <th class="py-4 px-2">Medium</th>
                       <th class="py-4 px-2">Mirror</th>
                       <th class="py-4 px-2">Photons</th>
+                      <th class="py-4 px-2">Intense</th>
+                      <th class="py-4 px-2">Coher</th>
+                      <th class="py-4 px-2">Dir</th>
+                      <th class="py-4 px-2">Dens</th>
                       <th class="py-4 px-6 text-right">Output</th>
                     </tr>
                   </thead>

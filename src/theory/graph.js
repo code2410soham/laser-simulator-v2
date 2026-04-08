@@ -12,6 +12,16 @@ export function initGraph() {
     }, 150);
   });
   
+  // Redraw when theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class') {
+        drawReadingGraph(canvas);
+      }
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true });
+  
   // Initial draw
   drawReadingGraph(canvas);
 }
@@ -58,7 +68,7 @@ function drawReadingGraph(canvas) {
 
   const isDark = document.documentElement.classList.contains('dark');
   const textColor = isDark ? '#f8fafc' : '#0f172a';
-  const gridColor = isDark ? 'rgba(248,250,252,0.05)' : 'rgba(15,23,42,0.05)';
+  const gridColor = isDark ? 'rgba(248,250,252,0.05)' : 'rgba(15,23,42,0.15)';
   const bgPlotColor = isDark ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
 
   // Background

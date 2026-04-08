@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper: Laser Simulator Dynamics</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+        }
+        h1, h2, h3 {
+            color: #000;
+            text-align: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .authors {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .abstract {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        .abstract b {
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        .keywords {
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+        p {
+            text-indent: 30px;
+            text-align: justify;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            text-align: center;
+            color: #777;
+        }
+        @media print {
+            body { margin: 0; padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Research Paper: Interactive Visualization and Simulation of Helium-Neon Laser Dynamics</h1>
+        <div class="authors">
+            Soham Bahirat (IT1203), Rohan Damare (IT1207), Shlok Kakade (IT1219), Sumit Kale (IT1220)
+        </div>
+        <div class="date">April 7, 2026</div>
+        <div class="keywords"><b>Keywords:</b> Laser Physics, He-Ne Laser, Stimulated Emission, Computational Simulation, Educational Technology</div>
+    </div>
+
+    <div class="abstract">
+        <b>Abstract</b>
+        This paper presents the design and implementation of a web-based, interactive simulator for Helium-Neon (He-Ne) laser technology. The simulator provides a virtual laboratory environment where users can manipulate physical parameters such as wavelength, pump power, and mirror alignment to observe real-time quantum interactions. By bridging the gap between theoretical physics and experimental observation, this platform serves as an advanced educational tool for understanding stimulated emission, population inversion, and optical resonator dynamics.
+    </div>
+
+    <section>
+        <h2>1. Introduction</h2>
+        <p>Laser (Light Amplification by Stimulated Emission of Radiation) technology is fundamental to modern photonics, spanning applications from telecommunications to surgical medicine. However, the underlying quantum mechanical processes—specifically stimulated emission and population inversion—are often abstract and difficult for students to visualize. The "Laser Sim" project aims to democratize access to high-fidelity laser experiments through a browser-based computational model. This research explores the methodology behind the simulator and its efficacy in teaching the core principles of gas lasers.</p>
+    </section>
+
+    <section>
+        <h2>2. Theoretical Background</h2>
+        <h3>2.1 Basic Principles of Laser Action</h3>
+        <p>Laser light is characterized by coherence, monochromaticity, and high directionality. These properties arise from three primary processes: (1) Absorption, where an atom absorbs a photon and moves to a higher energy state; (2) Spontaneous Emission, where an excited atom returns to the ground state naturally; and (3) Stimulated Emission, the key to laser action, where an incident photon triggers an excited atom to release an identical second photon sharing the same phase, frequency, and direction.</p>
+        
+        <h3>2.2 Population Inversion</h3>
+        <p>In thermal equilibrium, lower energy levels are more populated than higher ones. To achieve amplification, a non-equilibrium state called Population Inversion must be established—where the count of atoms in the excited state ($N_2$) exceeds the count in the ground state ($N_1$). We use external energy sources (pumping) to tip the scales and sustain this unstable state.</p>
+    </section>
+
+    <section>
+        <h2>3. Methodology and Implementation</h2>
+        <p>The simulator is built using a modern full-stack web architecture. The physics engine calculates photon density and inversion levels based on real-time user inputs. Visualization is achieved through the High-performance Canvas API, rendering photon movement and internal cavity dynamics in a high-frame-rate environment. Users have granular control over Pump Power, Mirror Alignment, and Active Media (Gas, Solid, or semicondutor).</p>
+    </section>
+
+    <section>
+        <h2>4. Applications of Laser Technology</h2>
+        <p>Laser technology has broad real-world impact. In medical science, it is used for precise bloodless surgery and LASIK vision correction. Industrial engineering employs lasers for CNC cutting, welding, and 3D sintering. Additionally, holography utilizes laser interference patterns for advanced 3D imaging and high-security optical encryption.</p>
+    </section>
+
+    <section>
+        <h2>5. Conclusion</h2>
+        <p>The He-Ne Laser Simulator successfully provides a professional-grade visualization of complex optical phenomena. By allowing users to "see" photons and "feel" the effects of cavity alignment, the platform effectively bridges the gap between theory and practice in photonics education. The integration of a knowledge-based quiz further ensures that the educational outcomes are met and measurable.</p>
+    </section>
+
+    <section>
+        <h2>6. References</h2>
+        <ul>
+            <li>Maiman, T. H. (1960). Stimulated optical radiation in ruby. Nature.</li>
+            <li>Javan, A., Bennett, W. R., & Herriott, D. R. (1961). Population Inversion and Continuous Optical Maser Action in a Gas Discharge. Physical Review Letters.</li>
+            <li>Siegman, A. E. (1986). Lasers. University Science Books.</li>
+            <li>Laser Sim Project Documentation, Activity 1, 2026.</li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        &copy; 2026 Laser Physics Simulator Platform • Activity 1 • Virtual Lab <br>
+        Published online at: laser-simulator-v2.vercel.app
+    </div>
+
+    <div class="no-print" style="margin-top: 40px; text-align: center;">
+        <button onclick="window.print()" style="padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px;">Print / Save to PDF</button>
+    </div>
+</body>
+</html>

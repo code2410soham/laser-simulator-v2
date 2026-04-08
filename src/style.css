@@ -20,7 +20,7 @@
   :root {
     --bg-color: var(--color-light-bg);
     --text-color: #0f172a;
-    --text-muted: #64748b;
+    --text-muted: #475569; /* Increased contrast from #64748b */
     --glass-bg: var(--color-glass-light);
     --glass-border: var(--color-glass-border-light);
     --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

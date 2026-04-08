@@ -24,7 +24,11 @@ export class LaserSimulator {
     this.stats = {
       photonCount: 0,
       inversion: 0,
-      output: 0
+      output: 0,
+      intensity: 0,
+      coherence: 0,
+      direction: 'None',
+      density: 0
     };
     
     this.resizeCanvas();
@@ -138,6 +142,22 @@ export class LaserSimulator {
     this.photons = this.photons.filter(p => p.active);
     this.stats.photonCount = this.photons.length;
     this.stats.output *= 0.95; // Decay output meter
+
+    // Update new metrics
+    this.stats.intensity = Math.round((this.stats.photonCount / 500) * 100);
+    this.stats.coherence = Math.round(this.params.mirrorAlignment * (this.stats.photonCount > 0 ? 1 : 0));
+    
+    if (this.stats.photonCount === 0) {
+      this.stats.direction = 'None';
+    } else if (this.params.mirrorAlignment > 95) {
+      this.stats.direction = 'Collimated';
+    } else if (this.params.mirrorAlignment > 70) {
+      this.stats.direction = 'Divergent';
+    } else {
+      this.stats.direction = 'Scattered';
+    }
+
+    this.stats.density = (this.stats.photonCount / (this.width * 60 / 10000)).toFixed(2);
   }
 
   drawStatic() {

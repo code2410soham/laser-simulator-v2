@@ -6,6 +6,7 @@ import { initSimulator } from './simulator/ui.js';
 import { initCards } from './applications/cards.js';
 import { initGraph } from './theory/graph.js';
 import { initQuiz } from './quiz/QuizManager.js';
+import { initTour } from './ui/tour.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -15,4 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCards();
   initGraph();
   initQuiz();
+  initTour();
 });
